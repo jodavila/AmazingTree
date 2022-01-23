@@ -24,13 +24,13 @@ defmodule TreeWeb.Router do
    scope "/api", TreeWeb do
      pipe_through :api
       # todas as funções de InstitutoController
-      # resources "/entites", InstitutoController, only [:index, :show]
+      # resources "/entites", InstitutoController, only: [:index, :show]
 
       # atraves do scope é possivel fazer o versionamento das rotas
 
       # scope "/v2", V2, as: :v2 do
       #  scope "/partners", Partners, as: :partners do
-      #    get "/objeto", ModeloController , only: [:index, :show, :update, :create]
+      #    get "/objeto", InstitutoController , only: [:index, :show, :update, :create]
       #  end 
       # end 
 

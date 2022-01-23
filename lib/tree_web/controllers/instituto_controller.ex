@@ -6,11 +6,6 @@ defmodule TreeWeb.InstitutoController do
 
   action_fallback TreeWeb.FallbackController
 
-  def index(conn, _params) do
-    entities = Educacao.list_entities()
-    render(conn, "index.json", entities: entities)
-  end
-
   def create(conn, %{"instituto" => instituto_params}) do
     with {:ok, %Instituto{} = instituto} <- Educacao.create_instituto(instituto_params) do
       conn
@@ -20,8 +15,17 @@ defmodule TreeWeb.InstitutoController do
     end
   end
 
+  def index(conn, _params) do
+    entities = Educacao.list_entities()
+    # lista_tree = Educacao.procura_todos_relacionados(id)
+
+    render(conn, "index.json", entities: entities)
+  end
+
+  
   def show(conn, %{"id" => id}) do
     instituto = Educacao.get_instituto!(id)
+    # lista_tree = Educacao.procura_todos_relacionados(id)
     render(conn, "show.json", instituto: instituto)
   end
 
@@ -37,7 +41,9 @@ defmodule TreeWeb.InstitutoController do
     instituto = Educacao.get_instituto!(id)
 
     with {:ok, %Instituto{}} <- Educacao.delete_instituto(instituto) do
-      send_resp(conn, :no_content, "")
+      # mostrar como ficou apos o delete
+      #send_resp(conn, :no_content, "")
+      render("show.json", instituto: instituto)
     end
   end
 end
