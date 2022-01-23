@@ -21,35 +21,24 @@ defmodule TreeWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", TreeWeb do
-  #   pipe_through :api
-  # end
+   scope "/api", TreeWeb do
+     pipe_through :api
+      # todas as funções de InstitutoController
+      # resources "/entites", InstitutoController, only [:index, :show]
 
-  # Enables LiveDashboard only for development
-  #
-  # If you want to use the LiveDashboard in production, you should put
-  # it behind authentication and allow only admins to access it.
-  # If your application does not have an admins-only section yet,
-  # you can use Plug.BasicAuth to set up some basic authentication
-  # as long as you are also using SSL (which you should anyway).
-  if Mix.env() in [:dev, :test] do
-    import Phoenix.LiveDashboard.Router
+      # atraves do scope é possivel fazer o versionamento das rotas
 
-    scope "/" do
-      pipe_through :browser
-      live_dashboard "/dashboard", metrics: TreeWeb.Telemetry
-    end
-  end
+      # scope "/v2", V2, as: :v2 do
+      #  scope "/partners", Partners, as: :partners do
+      #    get "/objeto", ModeloController , only: [:index, :show, :update, :create]
+      #  end 
+      # end 
 
-  # Enables the Swoosh mailbox preview in development.
-  #
-  # Note that preview only shows emails that were sent by the same
-  # node running the Phoenix server.
-  if Mix.env() == :dev do
-    scope "/dev" do
-      pipe_through :browser
+      get  "/v2/partners/entities", InstitutoController, :index
+      get  "/v2/partners/entities/id/:id", InstitutoController, :show
+      post "/v2/partners/entities" , InstitutoController, :create
+      put  "/v2/partners/entities/id/:id", InstitutoController, :update
+       
+   end
 
-      forward "/mailbox", Plug.Swoosh.MailboxPreview
-    end
-  end
 end
