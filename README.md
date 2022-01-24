@@ -9,15 +9,7 @@ A modelagem deverá utilizar apenas uma entidade (Entity), que poderá represent
 ## Para inicar o servidor :
 
   * Com o projeto aberto instalar as dependencias `mix deps.get`
-  * Gerar a base de dados e inicialiar as tabelas com `mix ecto.setup`
+  * Gerar a base de dados e inicialiar as tabelas com `mix ecto.setup` e `mix ecto.migrate` 
   * Iniciar o Phoenix com `mix phx.server` ou o terminal interativo `iex -S mix phx.server`
 
 Acessar no navegador [`localhost:4000`](http://localhost:4000).
-
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix

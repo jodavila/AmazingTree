@@ -15,6 +15,6 @@ defmodule Tree.Educacao.Instituto do
   def changeset(instituto, attrs) do
     instituto
     |> cast(attrs, [:name, :entity_type, :inep])
-    |> validate_required([:name, :entity_type, :inep])
+    |> validate_required([:name, :entity_type])
   end
 end

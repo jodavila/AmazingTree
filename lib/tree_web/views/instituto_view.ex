@@ -15,7 +15,8 @@ defmodule TreeWeb.InstitutoView do
       id: instituto.id,
       name: instituto.name,
       entity_type: instituto.entity_type,
-      inep: instituto.inep
+      inep: instituto.inep,
+      subtree_id: %{}
     }
   end
 end
